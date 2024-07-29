@@ -24,9 +24,9 @@ export default function Layout({ Component, state }: PageProps) {
 
 	return (
 		<div class={`h-screen ${css}`}>
-			<Navbar css={css} navItems={navItems} icon={state.data === "user" ? "/logo.svg" : "unir_logo.svg"} />
+			<Navbar css={css} navItems={navItems} icon={state.data === "user" ? "/logo.svg" : "/unir_logo.svg"} />
 			<Component />
-			<Footer css={footerCss} icon={state.data === "user" ? "/logo.svg" : "unir_logo.svg"} />
+			<Footer css={footerCss} icon={state.data === "user" ? "/logo.svg" : "/unir_logo.svg"} />
 		</div>
 	);
 }

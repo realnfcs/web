@@ -1,6 +1,7 @@
 import { Handlers } from "$fresh/server.ts";
 import { getCookies } from "$std/http/cookie.ts";
 import { items, Navbar } from "../components/Navbar.tsx";
+// import { InputText } from "npm:primereact/inputtext"
 
 const navItems: items[] = [
 	{
@@ -45,14 +46,14 @@ export default function Home() {
 				<div class="flex items-center justify-center">
 					<img src="/undraw_secure_login_pdn4_1.svg" />
 					<div class="max-w-min p-8">
-						<h1 class="text-7xl font-bold">Plataforma de Gerenciamento de usuários</h1>
+						<h1 class="text-7xl font-bold">Plataforma de Gerenciamento de <code class="text-blue-950">usuários</code> e <code class="text-blue-950">produtos</code></h1>
 					</div>
 				</div>
 				<div class="flex">
 					<a href="/register" class="font-normal text-2xl px-4 py-2 mx-8 underline text-violet-950 hover:text-violet-700">Cadastrar-se ↗</a>
 					<a href="/login" class="font-normal text-2xl px-4 py-2 mx-8 underline text-violet-950 hover:text-violet-700">Login ↗</a>
 				</div>
-			</div>		
+			</div>	
 		</div>
 	);
 }

@@ -5,6 +5,7 @@ export const handler: Handlers<User> = {
 
 	async GET(_req, ctx) {
 
+		console.log(ctx.params)
 		const result = await getUser(initConnection(), ctx.params.id)
 
 		const user: User = {

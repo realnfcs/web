@@ -16,6 +16,18 @@ import * as $managment_dependent_all from "./routes/managment/dependent/all.tsx"
 import * as $managment_dependent_register from "./routes/managment/dependent/register.tsx";
 import * as $managment_dependent_show from "./routes/managment/dependent/show.tsx";
 import * as $managment_index from "./routes/managment/index.tsx";
+import * as $managment_product_id_ from "./routes/managment/product/[id].tsx";
+import * as $managment_product_middleware from "./routes/managment/product/_middleware.ts";
+import * as $managment_product_delete_id_ from "./routes/managment/product/delete/[id].ts";
+import * as $managment_product_register from "./routes/managment/product/register.tsx";
+import * as $managment_product_show from "./routes/managment/product/show.tsx";
+import * as $managment_product_update_id_ from "./routes/managment/product/update/[id].tsx";
+import * as $managment_supplier_id_ from "./routes/managment/supplier/[id].tsx";
+import * as $managment_supplier_middleware from "./routes/managment/supplier/_middleware.ts";
+import * as $managment_supplier_delete_id_ from "./routes/managment/supplier/delete/[id].ts";
+import * as $managment_supplier_register from "./routes/managment/supplier/register.tsx";
+import * as $managment_supplier_show from "./routes/managment/supplier/show.tsx";
+import * as $managment_supplier_update_id_ from "./routes/managment/supplier/update/[id].tsx";
 import * as $managment_user_id_ from "./routes/managment/user/[id].tsx";
 import * as $managment_user_delete_id_ from "./routes/managment/user/delete/[id].ts";
 import * as $managment_user_show from "./routes/managment/user/show.tsx";
@@ -40,6 +52,21 @@ const manifest = {
     "./routes/managment/dependent/register.tsx": $managment_dependent_register,
     "./routes/managment/dependent/show.tsx": $managment_dependent_show,
     "./routes/managment/index.tsx": $managment_index,
+    "./routes/managment/product/[id].tsx": $managment_product_id_,
+    "./routes/managment/product/_middleware.ts": $managment_product_middleware,
+    "./routes/managment/product/delete/[id].ts": $managment_product_delete_id_,
+    "./routes/managment/product/register.tsx": $managment_product_register,
+    "./routes/managment/product/show.tsx": $managment_product_show,
+    "./routes/managment/product/update/[id].tsx": $managment_product_update_id_,
+    "./routes/managment/supplier/[id].tsx": $managment_supplier_id_,
+    "./routes/managment/supplier/_middleware.ts":
+      $managment_supplier_middleware,
+    "./routes/managment/supplier/delete/[id].ts":
+      $managment_supplier_delete_id_,
+    "./routes/managment/supplier/register.tsx": $managment_supplier_register,
+    "./routes/managment/supplier/show.tsx": $managment_supplier_show,
+    "./routes/managment/supplier/update/[id].tsx":
+      $managment_supplier_update_id_,
     "./routes/managment/user/[id].tsx": $managment_user_id_,
     "./routes/managment/user/delete/[id].ts": $managment_user_delete_id_,
     "./routes/managment/user/show.tsx": $managment_user_show,
