@@ -26,6 +26,7 @@ import * as $managment_supplier_id_ from "./routes/managment/supplier/[id].tsx";
 import * as $managment_supplier_middleware from "./routes/managment/supplier/_middleware.ts";
 import * as $managment_supplier_delete_id_ from "./routes/managment/supplier/delete/[id].ts";
 import * as $managment_supplier_register from "./routes/managment/supplier/register.tsx";
+import * as $managment_supplier_report from "./routes/managment/supplier/report.ts";
 import * as $managment_supplier_show from "./routes/managment/supplier/show.tsx";
 import * as $managment_supplier_update_id_ from "./routes/managment/supplier/update/[id].tsx";
 import * as $managment_user_id_ from "./routes/managment/user/[id].tsx";
@@ -64,6 +65,7 @@ const manifest = {
     "./routes/managment/supplier/delete/[id].ts":
       $managment_supplier_delete_id_,
     "./routes/managment/supplier/register.tsx": $managment_supplier_register,
+    "./routes/managment/supplier/report.ts": $managment_supplier_report,
     "./routes/managment/supplier/show.tsx": $managment_supplier_show,
     "./routes/managment/supplier/update/[id].tsx":
       $managment_supplier_update_id_,

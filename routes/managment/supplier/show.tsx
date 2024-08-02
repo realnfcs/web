@@ -69,7 +69,9 @@ export default function ShowSuppliers({ data }: PageProps<Supplier[]>) {
 					))}
 				</tbody>
 			</table>
-			<a href="/managment" class="font-normal text-2xl underline text-violet-950 hover:text-violet-700">Voltar ↗</a>
+			
+			<a href="/managment/supplier/report" class="font-normal text-2xl underline text-blue-400 hover:text-violet-700">Fazer Download do Relatório ↗</a>
+			<a href="/managment" class="font-normal mt-2 text-2xl underline text-violet-950 hover:text-violet-700">Voltar ↗</a>
 
 		</div>
 	);
