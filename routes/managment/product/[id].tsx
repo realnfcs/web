@@ -1,5 +1,6 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { getProduct, getSupplier, initConnection, Product } from "../../../services/database.ts";
+import { getCookies } from "$std/http/cookie.ts";
+import { getProduct, getSupplier, initConnection, Product, roles } from "../../../services/database.ts";
 
 interface Data {
 	product: Product
@@ -8,7 +9,15 @@ interface Data {
 
 export const handler: Handlers<Data> = {
 
-	async GET(_req, ctx) {
+	async GET(req, ctx) {
+
+		const cookies = getCookies(req.headers);
+
+		if (cookies.role !== roles[0]) {
+			const url = new URL(req.url);
+      		url.pathname = "/";
+      		return Response.redirect(url);
+		}
 
 		const result = await getProduct(initConnection(), ctx.params.id)
 

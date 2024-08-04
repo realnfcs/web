@@ -1,13 +1,23 @@
 import { Handlers } from "$fresh/server.ts";
 import { QueryArrayResult } from "https://deno.land/x/postgres@v0.19.3/mod.ts";
-import { getSuppliers, initConnection, Supplier } from "../../../services/database.ts";
+import { getSuppliers, initConnection, roles, Supplier } from "../../../services/database.ts";
 import { PDFDocument, rgb, StandardFonts } from 'https://cdn.skypack.dev/pdf-lib@^1.11.1?dts';
+import { getCookies } from "$std/http/cookie.ts";
 
 // path of the local where pdf file will be saved
 const pdfPath = "static/suppliers_report.pdf";
 
 export const handler: Handlers = {
 	async GET(req, _ctx) {
+
+		const cookies = getCookies(req.headers);
+
+		if (cookies.role !== roles[0]) {
+			const url = new URL(req.url);
+      		url.pathname = "/";
+      		return Response.redirect(url);
+		}
+
 		const headers = new Headers(req.headers);
 
 		const result: QueryArrayResult = await getSuppliers(initConnection())

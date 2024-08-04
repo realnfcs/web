@@ -78,6 +78,8 @@ export default function Managment({ data }: PageProps<Data>) {
 				<div class="flex flex-col items-start justify-start mt-8">
 					<a href="/managment/dependent/show" class="my-2 font-medium text-4xl text-violet-950">Mostrar Dependente {'>'}</a>
 					<a href="/managment/dependent/register" class="my-2 font-medium text-4xl text-violet-950">Cadastrar Dependente {'>'}</a>
+					<a href="/managment/supplier/show" class="my-2 font-medium text-4xl text-violet-950">Mostrar Fornecedores {'>'}</a>
+					<a href="/managment/product/show" class="my-2 font-medium text-4xl text-violet-950">Mostrar Produtos {'>'}</a>
 				</div>
 			</div>
 		)}

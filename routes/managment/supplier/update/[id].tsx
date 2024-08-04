@@ -1,9 +1,18 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { getSupplier, initConnection, Supplier, updateSupplier } from "../../../../services/database.ts";
+import { getCookies } from "$std/http/cookie.ts";
+import { getSupplier, initConnection, roles, Supplier, updateSupplier } from "../../../../services/database.ts";
 
 export const handler: Handlers<Supplier> = {
 
-	async GET (_req, ctx) {
+	async GET (req, ctx) {
+
+		const cookies = getCookies(req.headers);
+
+		if (cookies.role !== roles[0]) {
+			const url = new URL(req.url);
+      		url.pathname = "/";
+      		return Response.redirect(url);
+		}
 
 		const result = await getSupplier(initConnection(), ctx.params.id)
 

@@ -1,15 +1,19 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { QueryArrayResult } from "https://deno.land/x/postgres@v0.19.3/mod.ts";
-import { getProducts, getSuppliers, initConnection, Product, Supplier } from "../../../services/database.ts";
+import { getProducts, getSuppliers, initConnection, Product, roles, Supplier } from "../../../services/database.ts";
+import { getCookies } from "$std/http/cookie.ts";
 
 interface Data {
 	product: Product
 	supplier: string
+	role: string
 }
 
 export const handler: Handlers = {
 
-	async GET(_req, ctx) {
+	async GET(req, ctx) {
+
+		const cookies = getCookies(req.headers);
 
 		const result: QueryArrayResult = await getProducts(initConnection())
 		
@@ -43,7 +47,8 @@ export const handler: Handlers = {
 
 			return {
 				product: p, 
-				supplier: supplierName
+				supplier: supplierName,
+				role: cookies.role
 			}
 		})
 
@@ -82,10 +87,12 @@ export default function ShowProducts({ data }: PageProps<Data[]>) {
 							<td class="border border-gray-300 px-4 py-2">{d.product.qtt}</td>
 							<td class="border border-gray-300 px-4 py-2">{d.product.type}</td>
 							<td class="border border-gray-300 px-4 py-2">{d.supplier}</td>
-							<td class="border border-gray-300 px-4 py-2">
-								<a href={`/managment/product/update/${d.product.id}`} class="text-blue-400 mr-2">Atualizar ↗</a>
-								<a href={`/managment/product/delete/${d.product.id}`} class="text-red-600 ml-2">Remover ↗</a>
-							</td>
+							{d.role == roles[0] &&
+								<td class="border border-gray-300 px-4 py-2">
+									<a href={`/managment/product/update/${d.product.id}`} class="text-blue-400 mr-2">Atualizar ↗</a>
+									<a href={`/managment/product/delete/${d.product.id}`} class="text-red-600 ml-2">Remover ↗</a>
+								</td>
+							}
 						</tr>
 					))}
 

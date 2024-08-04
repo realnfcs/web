@@ -1,6 +1,7 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { QueryArrayResult } from "https://deno.land/x/postgres@v0.19.3/mod.ts";
-import { getProduct, getSuppliers, initConnection, Product, Supplier, updateProduct } from "../../../../services/database.ts";
+import { getProduct, getSuppliers, initConnection, Product, roles, Supplier, updateProduct } from "../../../../services/database.ts";
+import { getCookies } from "$std/http/cookie.ts";
 
 interface Data {
 	product: Product
@@ -9,7 +10,15 @@ interface Data {
 
 export const handler: Handlers<Data> = {
 
-	async GET(_req, ctx) {
+	async GET(req, ctx) {
+
+		const cookies = getCookies(req.headers);
+
+		if (cookies.role !== roles[0]) {
+			const url = new URL(req.url);
+      		url.pathname = "/";
+      		return Response.redirect(url);
+		}
 
 		const suppliers_result: QueryArrayResult = await getSuppliers(initConnection())
 		

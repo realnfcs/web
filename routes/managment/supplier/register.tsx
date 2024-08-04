@@ -1,5 +1,6 @@
 import { Handlers } from "$fresh/server.ts";
-import { initConnection, insertSupplier, Supplier } from "../../../services/database.ts";
+import { getCookies } from "$std/http/cookie.ts";
+import { initConnection, insertSupplier, roles, Supplier } from "../../../services/database.ts";
 
 export const handler: Handlers = {
 	
@@ -36,6 +37,19 @@ export const handler: Handlers = {
 		  status: 302,
 		  headers,
 		})
+	},
+
+	GET(req, ctx) {
+
+		const cookies = getCookies(req.headers);
+
+		if (cookies.role !== roles[0]) {
+			const url = new URL(req.url);
+      		url.pathname = "/";
+      		return Response.redirect(url);
+		}
+
+		return ctx.render()
 	}
 }
 
